@@ -12,6 +12,7 @@ use crate::v4l2::videodev::v4l2_ext_controls;
 use crate::v4l_sys::*;
 
 /// Linux capture device abstraction
+#[derive(Clone, Debug)]
 pub struct Device {
     /// Raw handle
     handle: Arc<Handle>,
@@ -358,6 +359,7 @@ impl io::Write for Device {
 /// Device handle for low-level access.
 ///
 /// Acquiring a handle facilitates (possibly mutating) interactions with the device.
+#[derive(Debug)]
 pub struct Handle {
     fd: std::os::raw::c_int,
 }
